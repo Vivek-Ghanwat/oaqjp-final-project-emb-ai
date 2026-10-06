@@ -19,6 +19,10 @@ def sent_analyzer():
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
+    # Check if dominant_emotion is None (status code 400 or invalid input)
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
+
     # Extract emotion scores and dominant emotion from response
     anger = response['anger']
     disgust = response['disgust']
